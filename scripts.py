@@ -208,7 +208,7 @@ def run_script(script_str, x, y):
                 elif split_line[0] == "COLOR":
                     rgb = list(map(int, split_line[1:4]))
                     rgb += [0] * (3 - len(rgb))
-                    xy = list(map(int, split_line[5:7]))
+                    xy = list(map(int, split_line[4:6]))
                     xy += [x, y][len(xy):]
                     print("[scripts] " + coords + "    Set color of " + str(tuple(xy)) + " to " + str(tuple(rgb)))
                     lp_colors.setXY(*xy, rgb)
@@ -216,7 +216,7 @@ def run_script(script_str, x, y):
                 elif split_line[0] == "IF_COLOR_GOTO_LABEL":
                     rgb = list(map(int, split_line[2:5]))
                     rgb += [0] * (3 - len(rgb))
-                    xy = list(map(int, split_line[6:8]))
+                    xy = list(map(int, split_line[5:7]))
                     xy += [x, y][len(xy):]
                     rgb_is = lp_colors.getXY(*xy)
                     print("[scripts] " + coords + "    If color of " + str(tuple(xy)) + " [currently " + str(tuple(rgb_is)) + "] is " + str(tuple(rgb)) + " goto LABEL " + split_line[1])
